@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import './Form.css';
 
-function Form() {
+function Form({ideas, addIdeas}) {
   const [ideaTitle, setIdeaTitle] = useState('');
   const [ideaContent, setIdeaContent] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('SUBMIT');
+    addIdeas(ideas => [...ideas, {title: ideaTitle, content: ideaContent}])
   }
 
   return (
@@ -27,7 +27,7 @@ function Form() {
         Enter your idea here:
       </label>
       <input
-        //type="text" 
+        type="text" 
         name="idea-content-input" 
         placeholder="Idea content..."
         value={ideaContent}
